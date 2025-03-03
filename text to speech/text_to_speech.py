@@ -1,24 +1,29 @@
 import pyttsx3
+import os
 
-#Initialize the engine
-engine=pyttsx3.init()
+def text_to_speech(text):
+  #Initialize the engine
+  engine=pyttsx3.init()
 
-# Set properties
-engine.setProperty('rate', 140)  # Slow speed
-engine.setProperty('volume', 1.0)  # Full volume
+  # Set properties
+  engine.setProperty('rate', 140)  # Slow speed
+  engine.setProperty('volume', 1.0)  # Full volume
 
-# Change voice
-voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[0].id)  # Female voice:1 and Male Voice:0
+  # Change voice
+  voices = engine.getProperty('voices')
+  engine.setProperty('voice', voices[0].id)  # Female voice:1 and Male Voice:0
 
-#Text to speech
-text=input("Enter what you want:")
-engine.say(text) #Adds text to the queue for speaking
-engine.runAndWait() #Processes the queue and speaks the text
+  #Text to speech
+  engine.say(text) #Adds text to the queue for speaking
+  engine.runAndWait() #Processes the queue and speaks the text
 
-# Save as a file
-engine.save_to_file(text, "text to speech\\output.mp3")
-engine.runAndWait()
+  # Save as a file
+  engine.save_to_file(text,"text to speech\\output.mp3")
+  engine.runAndWait()
+
+if __name__=="__main__":
+  text=input("Enter what you want:")
+  text_to_speech(text)
 
 #now understand this code step by step
 #1.Import module pyttsx3
